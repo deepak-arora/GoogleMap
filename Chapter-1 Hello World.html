@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+  html { height: 100% }
+  body { height: 100%; margin: 0px; padding: 0px }
+  #map_canvas { height: 100% }
+</style>
+
+<!-- adding google map api script -->
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?v=3&sensor=false"></script>
+
+<script type="text/javascript">
+	var map;
+	var mapCenter = new google.maps.LatLng(26.90, 75.80);
+	
+	function initialize() {
+		drawMap();		// drawing the map on page.
+		placeMarker();	// Placing marker on the map.
+	}
+	
+  function drawMap() {   
+    
+    var myOptions = {
+      zoom: 8,
+      center: mapCenter,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+  }
+  
+  function placeMarker() {
+	var marker = new google.maps.Marker({
+		position: mapCenter,
+		map:map,
+		title:'Hello World!',
+		draggable:true,
+		animation:'drop',
+		shadow:'shadow'		
+	});
+  }
+
+</script>
+</head>
+<body onload="initialize()">
+  <div id="map_canvas" style="width:100%; height:100%"></div>
+</body>
+</html>
